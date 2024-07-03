@@ -1,0 +1,37 @@
+<div class="font-bold text-xl text-center underline">Cart</div>
+<div *ngIf="cartItems.length > 0" class="product-list">
+    <ng-container *ngFor="let product of cartItems">
+        <div class=" bg-gray-400 m-1 product-item">
+            <div class="text-center">
+                <img src={{product.images[0]}} width="100px" height="100px" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3>{{product.title}}</h3>
+                <span class="price">Rs: {{product.price}}</span>
+                <span title="Dicount: {{product.discountPercentage}}%"
+                    class="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full dark:bg-gray-700 dark:text-blue-400">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path fill="currentColor"
+                            d="m18.774 8.245-.892-.893a1.5 1.5 0 0 1-.437-1.052V5.036a2.484 2.484 0 0 0-2.48-2.48H13.7a1.5 1.5 0 0 1-1.052-.438l-.893-.892a2.484 2.484 0 0 0-3.51 0l-.893.892a1.5 1.5 0 0 1-1.052.437H5.036a2.484 2.484 0 0 0-2.48 2.481V6.3a1.5 1.5 0 0 1-.438 1.052l-.892.893a2.484 2.484 0 0 0 0 3.51l.892.893a1.5 1.5 0 0 1 .437 1.052v1.264a2.484 2.484 0 0 0 2.481 2.481H6.3a1.5 1.5 0 0 1 1.052.437l.893.892a2.484 2.484 0 0 0 3.51 0l.893-.892a1.5 1.5 0 0 1 1.052-.437h1.264a2.484 2.484 0 0 0 2.481-2.48V13.7a1.5 1.5 0 0 1 .437-1.052l.892-.893a2.484 2.484 0 0 0 0-3.51Z" />
+                        <path fill="#fff"
+                            d="M8 13a1 1 0 0 1-.707-.293l-2-2a1 1 0 1 1 1.414-1.414l1.42 1.42 5.318-3.545a1 1 0 0 1 1.11 1.664l-6 4A1 1 0 0 1 8 13Z" />
+                    </svg>
+                </span>
+                <div class="m-2">Quantity: <input type="number" min="1"
+                        class="bg-gray-700 text-white m-1 w-12 rounded text-center text-lg"
+                        (change)="setItemQuantity($event,product)" value={{product.addedItems}}>
+                    <button class="bg-red-500 p-2 rounded m-2" (click)="removeCartItem(product)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<div *ngIf="cartItems.length > 0" class="bg-gray-700 text-white font-bold p-2 m-2 rounded text-center">
+    <p class="border border-2 border-yellow-800 rounded p-2">Cart Summary</p>
+    <p>Total Items: {{cartItems.length}}</p>
+    <div class="bg-green-300 text-black rounded-full"><p class="">Total Price: {{totalPrice.toFixed(2)}}</p></div>
+</div>
+<div class="bg-yellow-300 text-black p-2 m-1 text-center rounded font-bold" *ngIf="cartItems.length === 0">
+    No Items Added to Cart ... !!
+</div>
