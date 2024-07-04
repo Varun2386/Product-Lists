@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { HttpService } from '../../../services/htpp-service';
+import { HttpService } from '../../../services/http-service';
 import { BASEURL, IProduct, IProductList, } from '../../../constants';
 import { Observable } from 'rxjs';
 
