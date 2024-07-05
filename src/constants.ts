@@ -14,7 +14,3 @@ export interface IProduct {
     discountPercentage? : number,
     addedItems: number
 }
-export interface ICartItems {
-    products: Array<IProduct>,
-    totalPrice: number
-}
