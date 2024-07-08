@@ -2,10 +2,8 @@
 <div *ngIf="($products | async)?.products" class="product-list">
 <ng-container *ngFor="let product of ($products | async)?.products">
         <div class=" bg-gray-400 m-1 product-item">
-            <div class="text-center">
-                <img src={{product.images[0]}} width="100px" height="100px" alt="Product 1">
-            </div>
             <div class="product-info">
+               <img src={{product.images[0]}} width="100px" height="100px" alt="Product Img">
                 <h3>{{product.title}}</h3>
                 <p >{{product.description}}</p>
                 <p>Rating: {{product.rating}} / 5</p>
